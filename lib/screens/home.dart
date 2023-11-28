@@ -11,12 +11,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   String location = '';
   bool isCelsius = true;
   Weather? _currentWeather;
   final Webservice _webservice = Webservice();
   Box? box;
   List data = [];
+
   Future openBox() async {
     var dir = await getApplicationDocumentsDirectory();
     Hive.init(dir.path);
@@ -123,38 +125,36 @@ class _HomeState extends State<Home> {
             const SizedBox(height: 20),
             // Weather information display area
             _currentWeather != null
-                ? Container(
-                    child: Column(
-                      children: [
-                        Text(
-                            'Temperature: ${isCelsius ? _currentWeather!.main!.temp.toString() : _toFahrenheit(_currentWeather!.main!.temp!).toString()}°${isCelsius ? 'C' : 'F'}',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600)),
-                        Text(
-                            'Humidity: ${_currentWeather!.main!.humidity.toString()}°C',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600)),
-                        Text(
-                            'Wind Speed: ${_currentWeather!.wind!.speed.toString()}°C',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600)),
-                        Text(
-                            'Description: ${_currentWeather!.weather![0].description}°C',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600)),
+                ? Column(
+                  children: [
+                    Text(
+                        'Temperature: ${isCelsius ? _currentWeather!.main!.temp.toString() : _toFahrenheit(_currentWeather!.main!.temp!).toString()}°${isCelsius ? 'C' : 'F'}',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
+                    Text(
+                        'Humidity: ${_currentWeather!.main!.humidity.toString()}°C',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
+                    Text(
+                        'Wind Speed: ${_currentWeather!.wind!.speed.toString()}°C',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
+                    Text(
+                        'Description: ${_currentWeather!.weather![0].description}°C',
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
 
-                        //Text('Description: ${_currentWeather!.description}'),
-                      ],
-                    ),
-                  )
+                    //Text('Description: ${_currentWeather!.description}'),
+                  ],
+                )
                 : Container(), // You can place loading indicators or error messages here
             const SizedBox(height: 20),
             Row(
