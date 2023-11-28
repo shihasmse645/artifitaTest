@@ -1,5 +1,4 @@
 import 'package:arttest/models/whether.dart';
-import 'package:arttest/screens/hivepage.dart';
 import 'package:arttest/service/service.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -180,12 +179,7 @@ class _HomeState extends State<Home> {
               ],
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Hivepage()));
-                },
-                child: Text("hive"))
+           
           ],
         ),
       ),
